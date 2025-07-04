@@ -36,30 +36,43 @@
       'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
     ];
     
-    // Array.prototype.filter()
-    // 1. Filter the list of inventors for those who were born in the 1500's
+  // Array.prototype.filter()
+  // 1. Filter the list of inventors for those who were born in the 1500's
+  let arr1 = inventors.filter((item) => item.year >= 1500 && item.year < 1600);
 
-    // Array.prototype.map()
-    // 2. Give us an array of the inventors first and last names
+  // Array.prototype.map()
+  // 2. Give us an array of the inventors first and last names
+  let arr2 = inventors.map((item) => `${item.first} ${item.last}`);
 
-    // Array.prototype.sort()
-    // 3. Sort the inventors by birthdate, oldest to youngest
+  // Array.prototype.sort()
+  // 3. Sort the inventors by birthdate, oldest to youngest
+  let arr3 = inventors.sort((a, b) => (a.year - b.year) > 1 ? 1: -1);
 
-    // Array.prototype.reduce()
-    // 4. How many years did all the inventors live all together?
+  // Array.prototype.reduce()
+  // 4. How many years did all the inventors live all together?
+  let years = inventors.reduce((total, item) => total += (item.passed - item.year),0);
 
-    // 5. Sort the inventors by years lived
+  // 5. Sort the inventors by years lived
+  let arr4 = inventors.sort((a,b) => (a.passed - a.year) < (b.passed - b.year) ? 1 : -1);
 
-    // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
-    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+  // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+  // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+  const ele = document.querySelector('.mw-category');
+  const links = ele.querySelectorAll('a');
+  let arr5 = Array.from(links).map((item) => item.textContent);
+  arr5 = arr5.filter((item) => item.includes('de'))
 
+  // 7. sort Exercise
+  // Sort the people alphabetically by last name
+  let arr6 = people.sort((a,b) => (a.split(', '))[1] > (b.split(', '))[1]? 1 : -1);
 
-    // 7. sort Exercise
-    // Sort the people alphabetically by last name
-
-    // 8. Reduce Exercise
-    // Sum up the instances of each of these
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+  // 8. Reduce Exercise
+  // Sum up the instances of each of these
+  const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+  let arr7 = data.reduce((arr, item) => { 
+    (!arr[item])? arr[item] = 1 : arr[item]++;
+    return arr;  
+  },{});
 
   </script>
 </body>
